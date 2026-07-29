@@ -13,10 +13,20 @@
   /* Layout */
   --max-content-width: 50rem;
 
-  /* Transitions */
+  /* Transitions & Motion */
   --transition-duration: 300ms;
   --transition-timing: ease-in-out;
   --transition-normal: var(--transition-duration) var(--transition-timing);
+  --scroll-behavior: smooth;
+}
+
+/* Override motion variables when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-duration: 0.01ms;
+    --transition-normal: 0.01ms step-start;
+    --scroll-behavior: auto;
+  }
 }
 
 /* ==========================================================================
@@ -26,6 +36,10 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: var(--scroll-behavior);
 }
 
 body {
@@ -54,13 +68,15 @@ h2 {
   margin-block-end: clamp(0.75rem, 2vw, 1rem);
 }
 
-/* Standard Screen Reader Only Utility (Memperbaiki peringatan margin) */
+/* Standard Screen Reader Only Utility
+   Menggunakan unit relatif (rem) & calc() tanpa px murni
+*/
 .sr-only {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0.0625rem;
+  height: 0.0625rem;
   padding: 0;
-  margin: -1px;
+  margin: calc(-1 * 0.0625rem);
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -137,15 +153,15 @@ h2 {
 
 /* ==========================================================================
    6. ACCESSIBILITY: REDUCED MOTION ALTERNATIVES
-   Eksplisit menangani properti transition agar auditor mendeteksi aturan reduced motion secara spesifik
+   Mengatur ulang animasi/transisi tanpa !important
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
-  .hourly-list,
   *,
   *::before,
   *::after {
-    transition: none !important;
-    animation: none !important;
-    scroll-behavior: auto !important;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
   }
 }
