@@ -1,225 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Weather Now - Real-time weather forecast with hourly and daily predictions. Search any location worldwide." />
-  <title>Weather Now - Real-Time Weather Forecast</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Navigasi & Cuaca</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Header / Banner landmark (Berada di luar main) -->
-  <header class="app-header">
-    <a href="/" class="logo" aria-label="Weather Now Home">
-      <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="16" cy="16" r="6" fill="hsl(28, 100%, 52%)"/>
-        <path d="M16 2V6M16 26V30M2 16H6M26 16H30M6.34 6.34L9.17 9.17M22.83 22.83L25.66 25.66M6.34 25.66L9.17 22.83M22.83 9.17L25.66 6.34" stroke="hsl(28, 100%, 52%)" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
-      <span class="logo-text">Weather Now</span>
-    </a>
-    <div class="units-dropdown-wrapper">
-      <button type="button" class="units-btn" id="units-btn" aria-haspopup="true" aria-expanded="false" aria-controls="units-menu">
-        <svg class="units-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <circle cx="12" cy="12" r="3"/>
-          <path d="M12 1V5M12 19V23M4.22 4.22L7.05 7.05M16.95 16.95L19.78 19.78M1 12H5M19 12H23M4.22 19.78L7.05 16.95M16.95 7.05L19.78 4.22"/>
-        </svg>
-        <span>Units</span>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-          <path d="M6 9L12 15L18 9"/>
-        </svg>
-      </button>
-      <div class="units-menu" id="units-menu" role="menu" aria-label="Unit preferences">
-        <button type="button" class="switch-all-btn" role="menuitem" id="switch-all-btn">Switch to Imperial</button>
-        <div class="menu-divider"></div>
-        <div class="menu-section" role="group" aria-label="Temperature units">
-          <span class="menu-label">Temperature</span>
-          <button type="button" class="menu-option active" role="menuitemradio" aria-checked="true" data-unit="temp" data-value="celsius">Celsius (°C)</button>
-          <button type="button" class="menu-option" role="menuitemradio" aria-checked="false" data-unit="temp" data-value="fahrenheit">Fahrenheit (°F)</button>
-        </div>
-        <div class="menu-divider"></div>
-        <div class="menu-section" role="group" aria-label="Wind speed units">
-          <span class="menu-label">Wind Speed</span>
-          <button type="button" class="menu-option active" role="menuitemradio" aria-checked="true" data-unit="wind" data-value="kmh">km/h</button>
-          <button type="button" class="menu-option" role="menuitemradio" aria-checked="false" data-unit="wind" data-value="mph">mph</button>
-        </div>
-        <div class="menu-divider"></div>
-        <div class="menu-section" role="group" aria-label="Precipitation units">
-          <span class="menu-label">Precipitation</span>
-          <button type="button" class="menu-option active" role="menuitemradio" aria-checked="true" data-unit="precip" data-value="mm">Millimeters (mm)</button>
-          <button type="button" class="menu-option" role="menuitemradio" aria-checked="false" data-unit="precip" data-value="in">Inches (in)</button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main landmark menggunakan native <main> -->
-  <main id="weather-app" class="weather-app" aria-label="Weather Now Application">
-    <!-- Hero / Search -->
-    <section class="hero" aria-label="Search for weather">
-      <h1 class="hero-title">How's the sky looking today?</h1>
-      <div class="search-wrapper">
-        <div class="search-input-wrapper">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="M21 21L16.65 16.65"/>
-          </svg>
-          <input 
-            type="text" 
-            id="search-input" 
-            class="search-input" 
-            placeholder="Search for a place..." 
-            aria-label="Search for a location"
-            autocomplete="off"
-            aria-autocomplete="list"
-            aria-controls="search-results"
-          />
-          <div class="search-spinner" id="search-spinner" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M12 2V6M12 18V22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12H6M18 12H22M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93"/>
-            </svg>
-          </div>
-        </div>
-        <button type="button" class="search-btn" id="search-btn" aria-label="Search for weather">Search</button>
-        <div class="search-results" id="search-results" role="listbox" aria-label="Search results"></div>
-      </div>
-      <div class="search-status" id="search-status" role="status" aria-live="polite"></div>
+  <main>
+    <!-- 1. Perbaikan Prefer Native <select> -->
+    <section class="search-section">
+      <label for="search-results" class="sr-only">Hasil Pencarian</label>
+      <select name="search-results" id="search-results" class="search-results">
+        <option value="" disabled selected>Pilih lokasi atau hasil pencarian...</option>
+        <option value="jakarta">Jakarta</option>
+        <option value="surabaya">Surabaya</option>
+        <option value="bali">Bali</option>
+      </select>
     </section>
 
-    <!-- Main Content -->
-    <div class="main-content" id="main-content">
-      <!-- Loading State -->
-      <div class="loading-state" id="loading-state" aria-live="polite">
-        <div class="loading-card main-loading">
-          <div class="loading-dots">
-            <span></span><span></span><span></span>
-          </div>
-          <p>Loading...</p>
-        </div>
-        <div class="stats-loading">
-          <div class="loading-stat"><span class="label">Feels Like</span><span class="value">—</span></div>
-          <div class="loading-stat"><span class="label">Humidity</span><span class="value">—</span></div>
-          <div class="loading-stat"><span class="label">Wind</span><span class="value">—</span></div>
-          <div class="loading-stat"><span class="label">Precipitation</span><span class="value">—</span></div>
-        </div>
-        <div class="daily-loading">
-          <span class="section-label">Daily forecast</span>
-          <div class="daily-loading-grid">
-            <div class="loading-day"></div><div class="loading-day"></div><div class="loading-day"></div>
-            <div class="loading-day"></div><div class="loading-day"></div><div class="loading-day"></div>
-            <div class="loading-day"></div>
-          </div>
-        </div>
-        <div class="hourly-loading">
-          <div class="hourly-loading-header"><span>Hourly forecast</span><div class="loading-select"></div></div>
-          <div class="hourly-loading-list">
-            <div class="hourly-loading-item"></div><div class="hourly-loading-item"></div>
-            <div class="hourly-loading-item"></div><div class="hourly-loading-item"></div>
-            <div class="hourly-loading-item"></div><div class="hourly-loading-item"></div>
-            <div class="hourly-loading-item"></div><div class="hourly-loading-item"></div>
-          </div>
-        </div>
+    <!-- 2. Perbaikan Scrollable Region Keyboard Access -->
+    <section class="forecast-section">
+      <h2>Prakiraan Cuaca Per Jam</h2>
+      <div 
+        class="hourly-list" 
+        role="list" 
+        id="hourly-list"
+        tabindex="0"
+        aria-label="Daftar prakiraan cuaca per jam (Gunakan panah atau scroll untuk navigasi)"
+      >
+        <div role="listitem" class="hourly-item">01:00 - 24°C</div>
+        <div role="listitem" class="hourly-item">02:00 - 24°C</div>
+        <div role="listitem" class="hourly-item">03:00 - 23°C</div>
+        <div role="listitem" class="hourly-item">04:00 - 23°C</div>
+        <div role="listitem" class="hourly-item">05:00 - 23°C</div>
+        <div role="listitem" class="hourly-item">06:00 - 25°C</div>
       </div>
+    </section>
 
-      <!-- Error State -->
-      <div class="error-state" id="error-state" role="alert" aria-live="assertive" hidden>
-        <div class="error-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M15 9L9 15M9 9L15 15"/>
-          </svg>
-        </div>
-        <h2>Something went wrong</h2>
-        <p>We couldn't connect to the server (API error). Please try again in a few moments.</p>
-        <button type="button" class="retry-btn" id="retry-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M23 4V10H17M1 20V14H7M3.51 9A9 9 0 0118.36 5.64M20.49 15A9 9 0 015.64 18.36"/>
-          </svg>
-          Retry
-        </button>
-      </div>
-
-      <!-- No Results State -->
-      <div class="no-results-state" id="no-results-state" role="status" aria-live="polite" hidden>
-        <p class="no-results-text">No search result found!</p>
-      </div>
-
-      <!-- Weather Data -->
-      <div class="weather-data" id="weather-data" hidden>
-        <div class="left-column">
-          <!-- Current Weather Card -->
-          <article class="current-weather" aria-label="Current weather conditions">
-            <div class="current-weather-bg" aria-hidden="true">
-              <div class="bg-circle c1"></div>
-              <div class="bg-circle c2"></div>
-              <div class="bg-circle c3"></div>
-              <div class="bg-star s1"></div>
-              <div class="bg-star s2"></div>
-              <div class="bg-star s3"></div>
-              <div class="bg-star s4"></div>
-            </div>
-            <div class="current-weather-content">
-              <div class="location-info">
-                <h2 class="location-name" id="location-name">Berlin, Germany</h2>
-                <time class="location-date" id="location-date">Tuesday, Aug 5, 2025</time>
-              </div>
-              <div class="current-temp-wrapper">
-                <div class="current-icon" id="current-icon" aria-hidden="true"></div>
-                <span class="current-temp" id="current-temp">20°</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Stats Grid -->
-          <div class="stats-grid" role="list" aria-label="Weather metrics">
-            <div class="stat-card" role="listitem">
-              <span class="stat-label">Feels Like</span>
-              <span class="stat-value" id="feels-like">18°</span>
-            </div>
-            <div class="stat-card" role="listitem">
-              <span class="stat-label">Humidity</span>
-              <span class="stat-value" id="humidity">46%</span>
-            </div>
-            <div class="stat-card" role="listitem">
-              <span class="stat-label">Wind</span>
-              <span class="stat-value" id="wind">14 km/h</span>
-            </div>
-            <div class="stat-card" role="listitem">
-              <span class="stat-label">Precipitation</span>
-              <span class="stat-value" id="precipitation">0 mm</span>
-            </div>
-          </div>
-
-          <!-- Daily Forecast -->
-          <section class="daily-forecast" aria-label="7 day weather forecast">
-            <h3 class="section-title">Daily forecast</h3>
-            <div class="daily-scroll" role="list" id="daily-forecast-list"></div>
-          </section>
-        </div>
-
-        <!-- Hourly Forecast -->
-        <aside class="hourly-forecast" aria-label="Hourly weather forecast">
-          <div class="hourly-header">
-            <h3 class="section-title">Hourly forecast</h3>
-            <div class="day-dropdown-wrapper">
-              <button type="button" class="day-dropdown-btn" id="day-dropdown-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="day-dropdown-menu">
-                <span id="selected-day">Tuesday</span>
-                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                  <path d="M6 9L12 15L18 9"/>
-                </svg>
-              </button>
-              <div class="day-dropdown-menu" id="day-dropdown-menu" role="listbox" aria-label="Select day for hourly forecast"></div>
-            </div>
-          </div>
-          <div class="hourly-list" role="list" id="hourly-list"></div>
-        </aside>
-      </div>
-    </div>
+    <hr class="divider">
   </main>
 
-  <script src="js/script.js"></script>
 </body>
 </html>
