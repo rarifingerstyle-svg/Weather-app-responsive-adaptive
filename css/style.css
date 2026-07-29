@@ -6,11 +6,24 @@
   --color-primary-hsl: 233, 67%, 48%;
   --color-primary: hsl(var(--color-primary-hsl));
   --color-bg: hsl(0, 0%, 98%);
+  --color-surface: hsl(0, 0%, 100%);
   --color-text: hsl(0, 0%, 15%);
   --color-border: hsl(0, 0%, 85%);
 
+  /* Layout */
+  --max-content-width: 50rem; /* 800px -> rem */
+
   /* Transitions */
-  --transition-normal: 300ms ease-in-out;
+  --transition-duration: 300ms;
+  --transition-timing: ease-in-out;
+  --transition-normal: var(--transition-duration) var(--transition-timing);
+}
+
+/* Penanganan Reduced Motion via Variabel tanpa menggunakan !important */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-duration: 0.01ms;
+  }
 }
 
 /* ==========================================================================
@@ -31,30 +44,31 @@ body {
 }
 
 main {
-  max-width: 800px;
+  max-width: min(100%, var(--max-content-width));
   margin-inline: auto;
 }
 
+/* Penggunaan Logical Properties (margin-block-start, margin-block-end) & CSS Functions */
 .page-title {
   font-size: clamp(1.5rem, 4vw, 2.25rem);
-  margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-block-start: 0;
+  margin-block-end: clamp(1rem, 3vw, 1.5rem);
   color: var(--color-text);
 }
 
 h2 {
   font-size: clamp(1.2rem, 3vw, 1.5rem);
-  margin-top: 0;
-  margin-bottom: 1rem;
+  margin-block-start: 0;
+  margin-block-end: clamp(0.75rem, 2vw, 1rem);
 }
 
-/* Utility Class: Membantu Screen Reader membaca label tersembunyi */
+/* Utility Class untuk Screen Reader */
 .sr-only {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0.0625rem;
+  height: 0.0625rem;
   padding: 0;
-  margin: -1px;
+  margin: -0.0625rem;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -62,86 +76,69 @@ h2 {
 }
 
 /* ==========================================================================
-   3. SEARCH SECTION (Native <select>)
+   3. SEARCH SECTION
    ========================================================================== */
 .search-section {
-  margin-bottom: 2rem;
+  margin-block-end: clamp(1.5rem, 4vw, 2rem);
 }
 
 .search-results {
   width: 100%;
-  max-width: 400px;
+  max-width: 25rem;
   padding: 0.75rem 1rem;
   font-size: 1rem;
-  border: 1px solid var(--color-border);
+  border: 0.0625rem solid var(--color-border);
   border-radius: 0.375rem;
-  background-color: #ffffff;
+  background-color: var(--color-surface);
   color: var(--color-text);
 }
 
 .search-results:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: 0.125rem solid var(--color-primary);
+  outline-offset: 0.125rem;
 }
 
 /* ==========================================================================
-   4. HOURLY FORECAST LIST (Native <ul> & Keyboard Accessibility)
+   4. HOURLY FORECAST LIST
    ========================================================================== */
 .forecast-section {
-  margin-bottom: 2rem;
+  margin-block-end: clamp(1.5rem, 4vw, 2rem);
 }
 
 .hourly-list {
   display: flex;
   gap: 1rem;
   overflow-x: auto;
-  /* Reset bullet style default bawaan <ul> */
   list-style: none;
   margin: 0;
-  /* Responsive padding menggunakan fungsi clamp() */
   padding-inline: clamp(1rem, 3vw, 2.5rem);
   padding-block: 1rem;
-  border: 1px solid var(--color-border);
+  border: 0.0625rem solid var(--color-border);
   border-radius: 0.5rem;
-  background-color: #ffffff;
+  background-color: var(--color-surface);
   transition: transform var(--transition-normal);
 }
 
-/* Indikator Fokus Keyboard untuk Aksesibilitas Scrollable Region */
 .hourly-list:focus-visible {
-  outline: 3px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: 0.1875rem solid var(--color-primary);
+  outline-offset: 0.125rem;
 }
 
 .hourly-item {
   flex: 0 0 auto;
   padding: 1rem 1.5rem;
   background-color: var(--color-primary);
-  color: #ffffff;
+  color: var(--color-surface);
   border-radius: 0.375rem;
   font-weight: 500;
 }
 
 /* ==========================================================================
-   5. RELATIVE UNITS (px -> rem conversion)
+   5. DIVIDER
    ========================================================================== */
 .divider {
   border: none;
-  height: 0.0625rem; /* Setara dengan 1px (1 / 16) */
+  height: 0.0625rem;
   background-color: var(--color-border);
-  margin-block: 2rem;
-}
-
-/* ==========================================================================
-   6. REDUCED MOTION (Aksesibilitas Pencegah Motion Sickness)
-   ========================================================================== */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+  margin-block: clamp(1.5rem, 4vw, 2rem);
 }
