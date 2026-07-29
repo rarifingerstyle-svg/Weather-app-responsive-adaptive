@@ -153,13 +153,6 @@
     els.weatherData.hidden = true;
   }
 
-  function showNoResults() {
-    els.loadingState.classList.remove('active');
-    els.errorState.classList.remove('active');
-    els.noResultsState.classList.add('active');
-    els.weatherData.hidden = true;
-  }
-
   function showWeather() {
     els.loadingState.classList.remove('active');
     els.errorState.classList.remove('active');
