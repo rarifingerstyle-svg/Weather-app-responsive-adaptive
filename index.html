@@ -4,14 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aplikasi Navigasi & Cuaca</title>
+  <!-- Menghubungkan ke file CSS terpisah -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <main>
-    <!-- 1. Perbaikan Prefer Native <select> -->
+    <!-- Section 1: Dropdown Pencarian -->
     <section class="search-section">
-      <label for="search-results" class="sr-only">Hasil Pencarian</label>
+      <label for="search-results" class="sr-only">Hasil Pencarian Lokasi</label>
       <select name="search-results" id="search-results" class="search-results">
         <option value="" disabled selected>Pilih lokasi atau hasil pencarian...</option>
         <option value="jakarta">Jakarta</option>
@@ -20,7 +21,7 @@
       </select>
     </section>
 
-    <!-- 2. Perbaikan Scrollable Region Keyboard Access -->
+    <!-- Section 2: Daftar Cuaca yang Bisa Di-scroll dengan Keyboard -->
     <section class="forecast-section">
       <h2>Prakiraan Cuaca Per Jam</h2>
       <div 
@@ -28,7 +29,7 @@
         role="list" 
         id="hourly-list"
         tabindex="0"
-        aria-label="Daftar prakiraan cuaca per jam (Gunakan panah atau scroll untuk navigasi)"
+        aria-label="Daftar prakiraan cuaca per jam. Gunakan tombol panah kiri atau kanan pada keyboard untuk menggeser."
       >
         <div role="listitem" class="hourly-item">01:00 - 24°C</div>
         <div role="listitem" class="hourly-item">02:00 - 24°C</div>
@@ -36,9 +37,12 @@
         <div role="listitem" class="hourly-item">04:00 - 23°C</div>
         <div role="listitem" class="hourly-item">05:00 - 23°C</div>
         <div role="listitem" class="hourly-item">06:00 - 25°C</div>
+        <div role="listitem" class="hourly-item">07:00 - 26°C</div>
+        <div role="listitem" class="hourly-item">08:00 - 28°C</div>
       </div>
     </section>
 
+    <!-- Pembatas Garis -->
     <hr class="divider">
   </main>
 
