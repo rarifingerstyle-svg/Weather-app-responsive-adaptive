@@ -10,6 +10,9 @@
 <body>
 
   <main>
+    <!-- 1. Perbaikan Heading Level 1 (h1) untuk Struktur & Semantik -->
+    <h1 class="page-title">Aplikasi Informasi Cuaca</h1>
+
     <!-- Section 1: Dropdown Pencarian -->
     <section class="search-section">
       <label for="search-results" class="sr-only">Hasil Pencarian Lokasi</label>
@@ -21,25 +24,26 @@
       </select>
     </section>
 
-    <!-- Section 2: Daftar Cuaca yang Bisa Di-scroll dengan Keyboard -->
+    <!-- Section 2: Daftar Cuaca dengan Native <ul> & <li> -->
     <section class="forecast-section">
       <h2>Prakiraan Cuaca Per Jam</h2>
-      <div 
+      
+      <!-- 2. Perbaikan Native <ul> & tabindex="0" untuk Aksesibilitas Keyboard -->
+      <ul 
         class="hourly-list" 
-        role="list" 
         id="hourly-list"
         tabindex="0"
         aria-label="Daftar prakiraan cuaca per jam. Gunakan tombol panah kiri atau kanan pada keyboard untuk menggeser."
       >
-        <div role="listitem" class="hourly-item">01:00 - 24°C</div>
-        <div role="listitem" class="hourly-item">02:00 - 24°C</div>
-        <div role="listitem" class="hourly-item">03:00 - 23°C</div>
-        <div role="listitem" class="hourly-item">04:00 - 23°C</div>
-        <div role="listitem" class="hourly-item">05:00 - 23°C</div>
-        <div role="listitem" class="hourly-item">06:00 - 25°C</div>
-        <div role="listitem" class="hourly-item">07:00 - 26°C</div>
-        <div role="listitem" class="hourly-item">08:00 - 28°C</div>
-      </div>
+        <li class="hourly-item">01:00 - 24°C</li>
+        <li class="hourly-item">02:00 - 24°C</li>
+        <li class="hourly-item">03:00 - 23°C</li>
+        <li class="hourly-item">04:00 - 23°C</li>
+        <li class="hourly-item">05:00 - 23°C</li>
+        <li class="hourly-item">06:00 - 25°C</li>
+        <li class="hourly-item">07:00 - 26°C</li>
+        <li class="hourly-item">08:00 - 28°C</li>
+      </ul>
     </section>
 
     <!-- Pembatas Garis -->
